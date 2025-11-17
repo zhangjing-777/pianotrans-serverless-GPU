@@ -1,13 +1,22 @@
 FROM runpod/serverless:gpu-cuda12.1-ffmpeg
 
-# 安装依赖
-RUN pip install piano_transcription_inference librosa soundfile numpy
+# ---------------------------
+# Install Python Dependencies
+# ---------------------------
+RUN pip install --upgrade pip && \
+    pip install piano_transcription_inference librosa soundfile numpy
 
-# 创建工作目录
+# ---------------------------
+# Set working directory
+# ---------------------------
 WORKDIR /app
 
-# 复制源码到容器
+# ---------------------------
+# Copy source code
+# ---------------------------
 COPY src/ ./src/
 
-# 设定启动命令
+# ---------------------------
+# Serverless entrypoint
+# ---------------------------
 CMD ["python3", "src/handler.py"]
