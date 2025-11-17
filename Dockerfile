@@ -1,4 +1,4 @@
-FROM runpod/serverless:gpu-cuda12.1-ffmpeg
+FROM runpod/serverless:gpu-cuda12.2
 
 # ---------------------------
 # Install Python Dependencies
